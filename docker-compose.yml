@@ -1,0 +1,22 @@
+version: "3"
+services:
+  web:
+    image: shin1x1/laravel-on-php7-apache
+    ports:
+      - "80:80"
+    volumes:
+      - ./www:/var/www/html
+    links:
+      - db
+      - redis
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: vouchers
+    volumes:
+      - ./mysql:/var/lib/mysql
+  redis:
+    image: redis
