@@ -25,6 +25,9 @@ The tests are located at /www/tests/ folder. Test procedure is described at setu
 
 ### API
 
+For ease of testing you can also import the collection into your postman application.
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/9ccce162350cc342c9ee)
+
 ##### Recepients
 Get All
 - **URL:** `http://localhost/api/recepients`
@@ -104,8 +107,6 @@ Redeem
 - **METHOD:** `POST`
 - **Parameters**: `Recepient Id`
 - **Varables**: `email, code`
-
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/9ccce162350cc342c9ee)
 
 
 ### Future Improvements:
