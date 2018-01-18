@@ -45,7 +45,36 @@ class VoucherTest extends TestCase
         $this->assertEquals(200,$response->status());
         $this->assertEquals($input['recepient_id'], $outcome->recepient_id);
         $this->assertEquals($input['offer_id'], $outcome->offer_id);
-        //$this->assertNull($outcome->usage_date);
+        $this->assertEquals("N/A",$outcome->usage_date);
+    }
+
+    public function testRedeemVoucherValidation()
+    {
+        $input = ["name"=>rand(),"email"=>rand()."@gmail.com"];
+        $response = $this->call('PUT', '/api/recepients',$input);
+        $recepient = json_decode($response->content());
+
+        $input1 = ["name"=>rand(),"discount"=>rand(10,50)];
+        $response = $this->call('PUT', '/api/offers',$input1);
+        $offer = json_decode($response->content());
+
+        $input2 = ["recepient_id"=>$recepient->id,"offer_id"=>$offer->id];
+        $response = $this->call('PUT', '/api/vouchers/'.$recepient->id,$input2);
+        $voucher = json_decode($response->content());
+
+        $input3 = ["email"=>"","code"=>$voucher->code];
+        $response = $this->call('POST', '/api/vouchers/redeem/'.$recepient->id,$input3);
+        $this->assertContains("required",$response->content());
+
+
+        $input3 = ["email"=>$recepient->email,"code"=>""];
+        $response = $this->call('POST', '/api/vouchers/redeem/'.$recepient->id,$input3);
+        $this->assertContains("required",$response->content());
+
+
+        $input3 = ["email"=>"sdadsadas","code"=>$voucher->code];
+        $response = $this->call('POST', '/api/vouchers/redeem/'.$recepient->id,$input3);
+        $this->assertContains("valid email",$response->content());
     }
 
     public function testRedeemVoucher()

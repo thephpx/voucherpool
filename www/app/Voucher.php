@@ -22,7 +22,7 @@ class Voucher extends Model{
 
     public function getUsageDateAttribute($value)
     {
-    	if(is_null($value))
+    	if(is_null($value) || empty($value))
     	{
     		return 'N/A';
     	}else{

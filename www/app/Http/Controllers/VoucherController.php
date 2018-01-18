@@ -58,6 +58,8 @@ class VoucherController extends Controller
 
             $voucher->expiry_date = date("Y-m-d H:i:s", strtotime("+7 days"));
 
+            $voucher->usage_date = null;
+
             $random_string = str_random(8);
             
             while(Voucher::where('code','=',$random_string)->count() > 0)
