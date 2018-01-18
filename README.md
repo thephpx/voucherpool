@@ -1,5 +1,8 @@
 # Voucher Pool
 
+### Outline:
+- Built with Laravel lumen micro-framework
+
 ### Setup:
 1. Make blank directory : `mkdir vouchers`
 2. Get into vouchers directory : `cd vouchers`
@@ -11,3 +14,6 @@
 5. Migration of database `php artisan migrate`
 6. Browse `http://localhost/` to load front-end
 7. To run tests execute while inside **vouchers_web_1 cotainer**: `vendor/bin/phpunit`
+
+### API
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/6e2d512b4ab961fbac83)
