@@ -109,5 +109,6 @@ Redeem
 - **Varables**: `email, code`
 
 
-### Future Improvements:
-For long running processes or to improve efficiency we can incorporate queues to be able to handle large concurrent requests.
+### Observations & Future Improvements:
+- No mention of how vooucher expiry date is considered. 7 days after creation of the voucher code assumed.
+- For long running processes or to improve efficiency we can incorporate queues to be able to handle large concurrent requests.
